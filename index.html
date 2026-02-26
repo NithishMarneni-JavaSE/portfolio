@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nithish Marneni — Results-driven Software Developer with 4+ years of experience in Java, Spring Boot, microservices, and cloud-native architectures at PayPal and AT&T.">
+  <title>Nithish Marneni — Software Engineer Portfolio</title>
+  <style>
+    /* ===== 1. Base / Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #09090b;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ===== Nav Bar ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(9, 9, 11, 0.85);
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: #a855f7;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* ===== 2. Hero Section ===== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #09090b;
+    }
+
+    /* Purple check grid */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(168,85,247,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168,85,247,0.12) 1px, transparent 1px);
+      background-size: 48px 48px;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    }
+
+    /* Radial vignette + purple glare */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 50% 40%, rgba(168,85,247,0.08), transparent),
+        radial-gradient(ellipse 400px 300px at 30% 60%, rgba(124,58,237,0.05), transparent),
+        radial-gradient(ellipse 400px 300px at 70% 30%, rgba(192,132,252,0.04), transparent),
+        radial-gradient(ellipse at center, transparent 20%, #09090b 70%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Animated glare orb */
+    .hero-glare {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,85,247,0.12), rgba(124,58,237,0.05) 40%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      filter: blur(80px);
+      animation: glare-pulse 6s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes glare-pulse {
+      0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    /* Three.js canvas */
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    /* Hero content */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    /* ===== 3. Glitch Effect ===== */
+    .glitch {
+      position: relative;
+      display: block;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .glitch::before {
+      text-shadow: 2px 0 #0ff;
+      animation: glitch-before 5s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      text-shadow: -2px 0 #f0f;
+      animation: glitch-after 7s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-before {
+      0%   { clip-path: inset(40% 0 61% 0); }
+      5%   { clip-path: inset(10% 0 85% 0); }
+      10%  { clip-path: inset(80% 0 5% 0); }
+      15%  { clip-path: inset(25% 0 60% 0); }
+      20%  { clip-path: inset(55% 0 35% 0); }
+      25%  { clip-path: inset(0% 0 90% 0); }
+      30%  { clip-path: inset(70% 0 15% 0); }
+      35%  { clip-path: inset(45% 0 40% 0); }
+      40%  { clip-path: inset(90% 0 2% 0); }
+      45%  { clip-path: inset(15% 0 70% 0); }
+      50%  { clip-path: inset(60% 0 25% 0); }
+      55%  { clip-path: inset(5% 0 80% 0); }
+      60%  { clip-path: inset(35% 0 50% 0); }
+      65%  { clip-path: inset(75% 0 10% 0); }
+      70%  { clip-path: inset(20% 0 65% 0); }
+      75%  { clip-path: inset(50% 0 30% 0); }
+      80%  { clip-path: inset(85% 0 5% 0); }
+      85%  { clip-path: inset(30% 0 55% 0); }
+      90%  { clip-path: inset(65% 0 20% 0); }
+      95%  { clip-path: inset(10% 0 75% 0); }
+      100% { clip-path: inset(42% 0 58% 0); }
+    }
+
+    @keyframes glitch-after {
+      0%   { clip-path: inset(25% 0 58% 0); }
+      5%   { clip-path: inset(70% 0 15% 0); }
+      10%  { clip-path: inset(5% 0 80% 0); }
+      15%  { clip-path: inset(50% 0 35% 0); }
+      20%  { clip-path: inset(85% 0 5% 0); }
+      25%  { clip-path: inset(30% 0 55% 0); }
+      30%  { clip-path: inset(60% 0 20% 0); }
+      35%  { clip-path: inset(10% 0 75% 0); }
+      40%  { clip-path: inset(45% 0 40% 0); }
+      45%  { clip-path: inset(80% 0 10% 0); }
+      50%  { clip-path: inset(15% 0 70% 0); }
+      55%  { clip-path: inset(55% 0 30% 0); }
+      60%  { clip-path: inset(90% 0 2% 0); }
+      65%  { clip-path: inset(20% 0 65% 0); }
+      70%  { clip-path: inset(40% 0 45% 0); }
+      75%  { clip-path: inset(75% 0 10% 0); }
+      80%  { clip-path: inset(8% 0 85% 0); }
+      85%  { clip-path: inset(65% 0 20% 0); }
+      90%  { clip-path: inset(35% 0 50% 0); }
+      95%  { clip-path: inset(50% 0 35% 0); }
+      100% { clip-path: inset(28% 0 60% 0); }
+    }
+
+    /* ===== 4. Hero Content Styles ===== */
+    .hero-badge {
+      display: block;
+      width: fit-content;
+      margin: 0.5rem auto 1.5rem auto;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 9999px;
+      font-size: 12px;
+      padding: 4px 12px;
+      color: #d1d5db;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-heading {
+      display: block;
+      width: 100%;
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subheading {
+      color: #9ca3af;
+      font-size: 1.125rem;
+      max-width: 36rem;
+      margin: 0 auto 2.5rem auto;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #fff;
+      color: #000;
+      font-weight: 700;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 12px 32px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #e5e7eb;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 0.5rem;
+      padding: 12px 32px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .btn-resume {
+      display: inline-block;
+      background: #a855f7;
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 12px 32px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-resume:hover {
+      background: #9333ea;
+    }
+
+    /* ===== 5. Entrance Animations (slowed) ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .anim-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    .anim-delay-0 { animation-delay: 0s; }
+    .anim-delay-1 { animation-delay: 0.2s; }
+    .anim-delay-2 { animation-delay: 0.4s; }
+    .anim-delay-3 { animation-delay: 0.6s; }
+
+    /* ===== 6. Experience Section ===== */
+    .experience-section {
+      padding: 96px 16px;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #a855f7, rgba(168,85,247,0.2));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.65rem;
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #a855f7;
+      border: 2px solid #09090b;
+      box-shadow: 0 0 0 3px rgba(168,85,247,0.3);
+    }
+
+    .timeline-card {
+      background: #18181b;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .timeline-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .timeline-card:hover::before {
+      opacity: 0.15;
+    }
+
+    .timeline-card.glow-paypal::before { background: #003087; }
+    .timeline-card.glow-lamar::before { background: #c41230; }
+    .timeline-card.glow-att::before { background: #009fdb; }
+
+    .timeline-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+
+    .timeline-logo {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-logo img,
+    .timeline-logo svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .logo-paypal {
+      background: linear-gradient(135deg, #003087, #009cde);
+      padding: 10px;
+    }
+
+    .logo-lamar {
+      background: linear-gradient(135deg, #c41230, #8b0000);
+      padding: 8px;
+    }
+
+    .logo-att {
+      background: linear-gradient(135deg, #009fdb, #0057b8);
+      padding: 10px;
+    }
+
+    .timeline-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .timeline-company {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .timeline-date {
+      font-size: 0.75rem;
+      color: #a855f7;
+      font-weight: 600;
+      background: rgba(168,85,247,0.1);
+      padding: 3px 12px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      color: #c084fc;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-desc {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+
+    .timeline-desc li {
+      margin-bottom: 0.5rem;
+      list-style: none;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .timeline-desc li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a855f7;
+    }
+
+    /* ===== 7. Selected Work Section ===== */
+    .work-section {
+      padding: 96px 16px;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-bar {
+      height: 4px;
+      width: 80px;
+      background: #a855f7;
+      border-radius: 9999px;
+    }
+
+    /* ===== 8. Bento Grid ===== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Featured Card (Card 1) */
+    .card-featured {
+      grid-column: span 2;
+      grid-row: span 2;
+      min-height: 400px;
+      background: #18181b;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: border-color 0.3s;
+    }
+
+    .card-featured:hover {
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .card-featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(168,85,247,0.2), transparent);
+      z-index: 1;
+    }
+
+    .card-featured-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(24,24,27,0.95) 60%, transparent);
+    }
+
+    .card-featured-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #c084fc;
+      background: rgba(168,85,247,0.15);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .card-featured-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-featured-desc {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+      max-width: 28rem;
+      line-height: 1.5;
+    }
+
+    .card-featured-icons {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .card-featured-icons .icon-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .card-featured-icons .icon-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Standard Cards */
+    .card-standard {
+      padding: 1.5rem;
+      background: #18181b;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .card-standard:hover {
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    /* Glow orb */
+    .card-glow {
+      position: absolute;
+      width: 128px;
+      height: 128px;
+      top: -48px;
+      right: -48px;
+      border-radius: 50%;
+      filter: blur(48px);
+      opacity: 0.2;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .card-standard:hover .card-glow {
+      opacity: 0.4;
+    }
+
+    .glow-blue { background: #3b82f6; }
+    .glow-green { background: #22c55e; }
+    .glow-pink { background: #ec4899; }
+
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .card-code-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      background: rgba(255,255,255,0.05);
+      color: #9ca3af;
+      font-size: 0.875rem;
+      font-weight: 700;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .card-links a {
+      color: #6b7280;
+      transition: color 0.2s;
+    }
+
+    .card-links a:hover {
+      color: #fff;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .card-tags {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    /* ===== 9. Skills Section ===== */
+    .skills-section {
+      padding: 96px 16px;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: #18181b;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(168,85,247,0.3);
+    }
+
+    .skill-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #c084fc;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #d1d5db;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    /* ===== 10. Education Section ===== */
+    .education-section {
+      padding: 96px 16px;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .education-card {
+      background: #18181b;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .education-card:hover {
+      border-color: rgba(168,85,247,0.3);
+    }
+
+    .education-degree {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .education-school {
+      color: #c084fc;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-detail {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    .award-card {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.05));
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .award-card .award-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .award-card .award-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .award-card .award-detail {
+      color: #c084fc;
+      font-size: 0.85rem;
+    }
+
+    /* ===== 11. Contact / Footer ===== */
+    .contact-section {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 2.5rem;
+      padding: 80px 16px;
+      text-align: center;
+    }
+
+    .contact-heading {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-sub {
+      color: #9ca3af;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-email:hover {
+      color: #c084fc;
+    }
+
+    .contact-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      color: #9ca3af;
+      text-decoration: none;
+      margin-top: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .contact-phone:hover {
+      color: #fff;
+    }
+
+    .contact-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 0.75rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #9ca3af;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-socials a:hover {
+      background: rgba(168,85,247,0.2);
+      color: #fff;
+    }
+
+    .footer-text {
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin-top: 5rem;
+    }
+
+    /* ===== 12. Scroll Reveal ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== 13. Responsive ===== */
+    @media (max-width: 768px) {
+      .hero-heading {
+        font-size: 3rem;
+      }
+
+      .hero-canvas {
+        opacity: 0.3;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-featured {
+        grid-column: span 1;
+        grid-row: span 1;
+        min-height: 300px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .award-card {
+        grid-column: span 1;
+      }
+
+      .timeline-top {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .timeline-logo {
+        width: 44px;
+        height: 44px;
+      }
+
+      .contact-heading {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION BAR ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">N<span>.</span>M</a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-glare"></div>
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-heading glitch anim-fade-in-up anim-delay-0" data-text="Nithish Marneni">Nithish Marneni</h1>
+      <div class="hero-badge anim-fade-in-up anim-delay-1">Full-Stack Software Engineer</div>
+      <p class="hero-subheading anim-fade-in-up anim-delay-2">
+        Results-driven Software Developer with 4+ years at PayPal and AT&T. Specialized in Spring Boot, Kafka, React, and cloud-native architectures.
+      </p>
+      <div class="hero-buttons anim-fade-in-up anim-delay-3">
+        <a href="#work" class="btn-primary">View Projects</a>
+        <a href="Nithish_Marneni_Resume.pdf" download class="btn-resume">Download Resume</a>
+        <a href="#contact" class="btn-secondary">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE SECTION ===== -->
+  <section class="experience-section" id="experience">
+    <div class="section-header reveal">
+      <h2 class="section-title">Experience</h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="timeline">
+      <!-- PayPal -->
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glow-paypal">
+          <div class="timeline-top">
+            <div class="timeline-logo logo-paypal">
+              <img src="https://upload.wikimedia.org/wikipedia/donate/0/02/Paypal-logo-white.svg" alt="PayPal">
+            </div>
+            <div class="timeline-info">
+              <div class="timeline-header">
+                <span class="timeline-company">PayPal</span>
+                <span class="timeline-date">June 2025 – Present</span>
+              </div>
+              <div class="timeline-role">Software Developer</div>
+              <ul class="timeline-desc">
+                <li>Engineered fraud detection microservices processing millions of transactions with Spring Boot and Kafka</li>
+                <li>Built real-time event-driven pipelines for transaction monitoring and risk analysis</li>
+                <li>Designed and deployed RESTful APIs for payment processing and compliance workflows</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lamar University -->
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glow-lamar">
+          <div class="timeline-top">
+            <div class="timeline-logo logo-lamar">
+              <img src="https://www.lamar.edu/kvlu/_files/images/logos/lu-logo-white.png" alt="Lamar University">
+            </div>
+            <div class="timeline-info">
+              <div class="timeline-header">
+                <span class="timeline-company">Lamar University</span>
+                <span class="timeline-date">Jan 2024 – May 2025</span>
+              </div>
+              <div class="timeline-role">Research Assistant</div>
+              <ul class="timeline-desc">
+                <li>Developed a full-stack vendor management system with React frontend and Spring Boot backend</li>
+                <li>Deployed containerized microservices on Azure AKS with CI/CD pipelines</li>
+                <li>Optimized database queries and API response times, reducing latency by 40%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AT&T -->
+      <div class="timeline-item reveal reveal-delay-3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glow-att">
+          <div class="timeline-top">
+            <div class="timeline-logo logo-att">
+              <img src="https://companieslogo.com/img/orig/T_BIG.D-b3ea37a9.svg?t=1740127114" alt="AT&amp;T">
+            </div>
+            <div class="timeline-info">
+              <div class="timeline-header">
+                <span class="timeline-company">AT&amp;T</span>
+                <span class="timeline-date">July 2021 – July 2023</span>
+              </div>
+              <div class="timeline-role">Software Developer</div>
+              <ul class="timeline-desc">
+                <li>Built and maintained 20+ microservices handling 1M+ daily API requests</li>
+                <li>Developed AI-powered chatbots for customer service automation</li>
+                <li>Implemented event-driven architectures with Kafka and designed CI/CD pipelines with Jenkins</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SELECTED WORK SECTION ===== -->
+  <section class="work-section" id="work">
+    <div class="section-header reveal">
+      <h2 class="section-title">Selected Work</h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Card 1: Featured — Spring Boot Microservices Banking System -->
+      <div class="card-featured reveal reveal-delay-1">
+        <div class="card-featured-overlay"></div>
+        <div class="card-featured-content">
+          <div class="card-featured-badge">Featured Project</div>
+          <h3 class="card-featured-title">Spring Boot Microservices Banking System</h3>
+          <p class="card-featured-desc">Full-stack microservices architecture with Spring Boot design patterns and real-time financial transaction processing, service discovery, and API gateway.</p>
+          <div class="card-featured-icons">
+            <a href="https://github.com/NithishMarneni-JavaSE/spring-boot-microservices-banking-application" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
+              <i data-lucide="github" style="width:16px;height:16px"></i>
+            </a>
+            <a href="https://github.com/NithishMarneni-JavaSE/spring-boot-microservices-banking-application" target="_blank" rel="noopener" class="icon-btn" aria-label="External Link">
+              <i data-lucide="external-link" style="width:16px;height:16px"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Fraud Detection System -->
+      <div class="card-standard reveal reveal-delay-2">
+        <div class="card-glow glow-blue"></div>
+        <div class="card-top-row">
+          <div class="card-code-icon">&lt;/&gt;</div>
+          <div class="card-links">
+            <a href="https://github.com/NithishMarneni-JavaSE/lab-fraud-detection" target="_blank" rel="noopener" aria-label="GitHub"><i data-lucide="github" style="width:18px;height:18px"></i></a>
+            <a href="https://github.com/NithishMarneni-JavaSE/lab-fraud-detection" target="_blank" rel="noopener" aria-label="External Link"><i data-lucide="external-link" style="width:18px;height:18px"></i></a>
+          </div>
+        </div>
+        <h3 class="card-title">Fraud Detection System</h3>
+        <p class="card-desc">Real-time fraud detection with ML models for transaction analysis and risk scoring.</p>
+        <div class="card-tags">#Java #SpringBoot #Analytics</div>
+      </div>
+
+      <!-- Card 3: Financial API Service -->
+      <div class="card-standard reveal reveal-delay-3">
+        <div class="card-glow glow-green"></div>
+        <div class="card-top-row">
+          <div class="card-code-icon">&lt;/&gt;</div>
+          <div class="card-links">
+            <a href="https://github.com/NithishMarneni-JavaSE/financial-java-api" target="_blank" rel="noopener" aria-label="GitHub"><i data-lucide="github" style="width:18px;height:18px"></i></a>
+            <a href="https://github.com/NithishMarneni-JavaSE/financial-java-api" target="_blank" rel="noopener" aria-label="External Link"><i data-lucide="external-link" style="width:18px;height:18px"></i></a>
+          </div>
+        </div>
+        <h3 class="card-title">Financial API Service</h3>
+        <p class="card-desc">RESTful API for financial data with authentication and rate limiting.</p>
+        <div class="card-tags">#Java #REST #SpringBoot</div>
+      </div>
+
+      <!-- Card 4: Real-Time Chat System -->
+      <div class="card-standard reveal reveal-delay-4">
+        <div class="card-glow glow-pink"></div>
+        <div class="card-top-row">
+          <div class="card-code-icon">&lt;/&gt;</div>
+          <div class="card-links">
+            <a href="https://github.com/NithishMarneni-JavaSE/java_chat_system" target="_blank" rel="noopener" aria-label="GitHub"><i data-lucide="github" style="width:18px;height:18px"></i></a>
+            <a href="https://github.com/NithishMarneni-JavaSE/java_chat_system" target="_blank" rel="noopener" aria-label="External Link"><i data-lucide="external-link" style="width:18px;height:18px"></i></a>
+          </div>
+        </div>
+        <h3 class="card-title">Real-Time Chat System</h3>
+        <p class="card-desc">Multi-threaded chat with message queuing and real-time communication patterns.</p>
+        <div class="card-tags">#Java #Networking #Architecture</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS SECTION ===== -->
+  <section class="skills-section" id="skills">
+    <div class="section-header reveal">
+      <h2 class="section-title">Skills</h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-title">Backend</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">Spring Boot</span>
+          <span class="skill-pill">Hibernate</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">Microservices</span>
+          <span class="skill-pill">Kafka</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-title">Frontend</div>
+        <div class="skill-pills">
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">Angular</span>
+          <span class="skill-pill">TypeScript</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-card-title">Cloud & DevOps</div>
+        <div class="skill-pills">
+          <span class="skill-pill">AWS</span>
+          <span class="skill-pill">Azure</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Kubernetes</span>
+          <span class="skill-pill">Jenkins</span>
+          <span class="skill-pill">CI/CD</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-title">Databases</div>
+        <div class="skill-pills">
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">DynamoDB</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-title">Testing</div>
+        <div class="skill-pills">
+          <span class="skill-pill">JUnit</span>
+          <span class="skill-pill">Mockito</span>
+          <span class="skill-pill">Selenium</span>
+          <span class="skill-pill">TestNG</span>
+          <span class="skill-pill">TDD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION SECTION ===== -->
+  <section class="education-section" id="education">
+    <div class="section-header reveal">
+      <h2 class="section-title">Education</h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="education-grid">
+      <div class="education-card reveal reveal-delay-1">
+        <div class="education-degree">MS Computer Science</div>
+        <div class="education-school">Lamar University</div>
+        <div class="education-detail">GPA: 4.0 / 4.0</div>
+      </div>
+
+      <div class="education-card reveal reveal-delay-2">
+        <div class="education-degree">BTech Electronics &amp; Communication</div>
+        <div class="education-school">JNTUH</div>
+        <div class="education-detail">GPA: 9.1 / 10.0</div>
+      </div>
+
+      <div class="award-card reveal reveal-delay-3">
+        <div class="award-icon">&#127942;</div>
+        <div class="award-title">Outstanding Graduate Student Award</div>
+        <div class="award-detail">2024 – 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER ===== -->
+  <section class="contact-section" id="contact">
+    <div class="reveal">
+      <h2 class="contact-heading">Let's Connect</h2>
+      <p class="contact-sub">Open to opportunities and collaboration.</p>
+      <a href="mailto:mnithishj1@gmail.com" class="contact-email">
+        <i data-lucide="mail" style="width:24px;height:24px"></i>
+        mnithishj1@gmail.com
+      </a>
+      <br>
+      <a href="tel:+14093519130" class="contact-phone">
+        <i data-lucide="phone" style="width:18px;height:18px"></i>
+        +1 (409) 351-9130
+      </a>
+      <div class="contact-socials">
+        <a href="https://github.com/NithishMarneni-JavaSE" target="_blank" rel="noopener" aria-label="GitHub">
+          <i data-lucide="github" style="width:20px;height:20px"></i>
+        </a>
+        <a href="https://linkedin.com/in/nithishmarneni" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i data-lucide="linkedin" style="width:20px;height:20px"></i>
+        </a>
+      </div>
+      <p class="footer-text">&copy; 2025 Nithish Marneni. Built with Three.js</p>
+    </div>
+  </section>
+
+  <!-- CDN Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    // ===== 1. Lucide Icons Init =====
+    lucide.createIcons();
+
+    // ===== 2. Three.js Scene =====
+    (function() {
+      const canvas = document.getElementById('heroCanvas');
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 5;
+
+      const geometry = new THREE.TorusKnotGeometry(1.5, 0.5, 128, 32, 2, 3);
+      const material = new THREE.MeshBasicMaterial({ wireframe: true, color: 0x7c3aed });
+      const torusKnot = new THREE.Mesh(geometry, material);
+      scene.add(torusKnot);
+
+      let autoRotX = 0;
+      let autoRotY = 0;
+      let mouseX = 0;
+      let mouseY = 0;
+      let targetMouseX = 0;
+      let targetMouseY = 0;
+
+      document.addEventListener('mousemove', function(e) {
+        targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        autoRotX += 0.0015;
+        autoRotY += 0.0025;
+
+        mouseX += (targetMouseX - mouseX) * 0.03;
+        mouseY += (targetMouseY - mouseY) * 0.03;
+
+        torusKnot.rotation.x = autoRotX + mouseY * 0.5;
+        torusKnot.rotation.y = autoRotY + mouseX * 0.5;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', function() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    })();
+
+    // ===== 3. Scroll Reveal (IntersectionObserver) =====
+    (function() {
+      var revealElements = document.querySelectorAll('.reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      revealElements.forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // ===== 4. Smooth Scroll =====
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ===== 5. Nav Scroll Effect =====
+    (function() {
+      var navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
